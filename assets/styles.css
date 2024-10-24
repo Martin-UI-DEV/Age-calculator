@@ -121,53 +121,48 @@ body {
 
     .card-header {
         display: flex;
-        flex-flow: row nowrap;
-        gap: 1.75rem;
+        flex-direction: column;
+        gap: .5rem;
         padding-bottom: 1rem;
         padding-right: 40px;
         border-bottom: 1px solid var(--clr-off-white);
         position: relative;
-
-        .input-group {
+        .inputs {
             display: flex;
-            flex-direction: column;
-            gap: .5rem;
-            label {
-                font-weight: 700;
-                color: var(--clr-smoky-grey);
-                text-transform: uppercase;
-                font-size: .8rem;
-                letter-spacing: 3px;
-            }
-
-            input {
-                font-size: 32px;
-                font-weight: 700;
-                width: 9rem;
-                padding: .4rem 1rem;
-                color: var(--clr-off-black);
-                border-radius: .5rem;
-                border: 1px solid var(--clr-off-white);
-            }
-            input::placeholder {
-                color: var(--clr-light-grey);
-            }
-            small {
-                visibility: hidden;
-                font-size: 12px;
-                font-style: italic;
+            flex-flow: row nowrap;
+            gap: 1.75rem;
+            .input-group {
+                display: flex;
+                flex-direction: column;
+                gap: .2rem;
+                label {
+                    font-weight: 700;
+                    color: var(--clr-smoky-grey);
+                    text-transform: uppercase;
+                    font-size: .8rem;
+                    letter-spacing: 3px;
+                }
+                input {
+                    font-size: 2rem;
+                    font-weight: 700;
+                    width: 9rem;
+                    padding: .4rem 1rem;
+                    color: var(--clr-off-black);
+                    border-radius: .5rem;
+                    border: 1px solid var(--clr-off-white);
+                }
+                input::placeholder {
+                    color: var(--clr-light-grey);
+                }
             }
         }
+     
         .input-group.danger {
             label {
                 color: var(--clr-light-red);
             }
             input {
                 border-color: var(--clr-light-red);
-            }
-            small {
-                visibility: visible;
-                color: var(--clr-light-red);
             }
         }
         button {
@@ -182,6 +177,12 @@ body {
             img {
                 aspect-ratio: 1/1;
             }
+        }
+        small {
+            visibility: hidden;
+            font-size: 13px;
+            font-style: italic;
+            color: var(--clr-light-red);
         }
     }
     .card-body {
@@ -207,7 +208,54 @@ body {
                 }   
             }
         }
-    
-  
     }
+    @media (width <= 992px) {
+        .card {
+            width: fit-content;
+            max-width: 100%;
+        }
+    }
+}
+
+@media (width <=992px) {
+    .card {
+        width: fit-content;
+        max-width: 100%;
+        padding-inline: 1.25rem;
+
+        .card-header {
+            gap: 1rem;
+            padding-right: 0;
+            padding-bottom: 1.5rem;
+
+            .input-group {
+                gap: .25rem;
+                label {
+                    font-size: .9rem;
+                    letter-spacing: 3px;
+                }
+                input {
+                    width: 100%; 
+                    font-size: 1.5rem;
+                    padding: .3rem .75rem;
+                }
+            }
+            button {
+                padding: 1rem; 
+            }
+        }
+
+        .card-body {
+            font-size: 2.5rem;
+            font-weight: 900;
+            ul {
+                li{
+                    span {
+                        font-size: 3.5rem;
+                    }
+                }
+            } 
+        }
+    }
+
 }

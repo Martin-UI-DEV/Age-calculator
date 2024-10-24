@@ -12,24 +12,26 @@
 <body>
   <div class="container">
     <div class="card">
-      <div class="card-header">
-        <div class="input-group">
-          <label>Day</label>
-          <input type="text" placeholder="DD" id="inputDay">
-          <small>This is field required</small>
+      <form>
+        <div class="card-header">
+          <div class="inputs">
+            <div class="input-group">
+              <label>Day</label>
+              <input type="text" placeholder="DD" id="inputDay" name="day" min="1" max="31" maxlength="2" required>
+            </div>
+            <div class="input-group">
+              <label>Month</label>
+              <input type="text" placeholder="MM" id="inputMonth" name="month" min="1" max="12" maxlength="2" required>
+            </div>
+            <div class="input-group">
+              <label>Year</label>
+              <input type="text" placeholder="YYYY" id="inputYear" name="year" min="1900" maxlength="4" required>
+            </div>
+          </div>   
+          <small id="display-error" >Error</small>
+          <button type="button" id="btnCalculate"><img src="./assets/images/icon-arrow.svg" alt="arrow"></button>
         </div>
-        <div class="input-group">
-          <label>Month</label>
-          <input type="text" placeholder="MM" id="inputMonth">
-          <small>This is field required</small>
-        </div>
-        <div class="input-group">
-          <label>Year</label>
-          <input type="text" placeholder="YYYY" id="inputYear">
-          <small>This is field required</small>
-        </div>
-        <button id="btnCalculate" ><img src="./assets/images/icon-arrow.svg" alt="arrow"></button>
-      </div>
+      </form>
       <div class="card-body">
         <ul id="results">
           <li><span id="years">--</span>years</li>
