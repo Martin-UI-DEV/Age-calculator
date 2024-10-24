@@ -141,6 +141,7 @@ body {
                     text-transform: uppercase;
                     font-size: .8rem;
                     letter-spacing: 3px;
+                    padding-left: 4px;
                 }
                 input {
                     font-size: 2rem;
@@ -157,14 +158,6 @@ body {
             }
         }
      
-        .input-group.danger {
-            label {
-                color: var(--clr-light-red);
-            }
-            input {
-                border-color: var(--clr-light-red);
-            }
-        }
         button {
             position: absolute;
             right: 0;
