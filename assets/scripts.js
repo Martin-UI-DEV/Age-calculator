@@ -6,7 +6,7 @@ function ageCalculator() {
     const years = $('#years');
     const months = $('#months');
     const days = $('#days');
-    const inputDay = $('#inputDay').value;
+    const inputDay = Number($('#inputDay').value);
     const inputMonthValue = $('#inputMonth').value;
     const inputYear = $('#inputYear').value;
     const displayError = $('#display-error');
@@ -30,9 +30,7 @@ function ageCalculator() {
     };
     function removeLeadingZero(num) {
         let strNumber = num.toString();       
-        // Verificar si el primer carácter es '0'
         if (strNumber.charAt(0) === '0') {
-          // Eliminar el primer carácter
           strNumber = strNumber.slice(1);
         }
         return parseInt(strNumber, 10);
@@ -96,25 +94,31 @@ function ageCalculator() {
             return false
         }
     }
-    function monthsDistance(m, cm) {
-        let result = (12 - m) + cm;
-        return result >= 12 ? result = result  - 12 : result;
-    }
-    function daysDistance(d, m) {
-        let prevMonth = maxDaysInMonth[currentMonth - 1];
-        let result = prevMonth - d;
-        result == prevMonth ? result = 0 : result;
-        result > prevMonth ? result = result - prevMonth : result
+    function calculateMonths(m, cm, d, cd) {
+        let result = 0;
+        if (cm < m && d > cd || cm > m && d > cd) {
+            result = cm - 1;
+        } else {
+            result = cm;
+        }
         return result;
     }
+    
+    function calculateDays(cd, cm, d) {
+        let prevMonthDays = maxDaysInMonth[cm - 1];
+        let result = (prevMonthDays - d) + cd;
+        return result;
+    }
+
     const birthday = checkBirthday(inputDay, inputMonth);
-    function calculator(d, m, y) { 
-        birthday ? years.textContent = currentYear - y : years.textContent = (currentYear - y) - 1;
-        currentDay < d ? months.textContent = monthsDistance(m, currentMonth) - 1: months.textContent = monthsDistance(m, currentMonth);
-        days.textContent = daysDistance(d, m);
+    
+    function calculator() { 
+        birthday ? years.textContent = currentYear - inputYear : years.textContent = (currentYear - inputYear) - 1;
+        months.textContent = calculateMonths(inputMonth, currentMonth, inputDay, currentDay);
+        days.textContent = calculateDays(currentDay, currentMonth, inputDay)
     }
  
-    calculator(inputDay, inputMonth, inputYear);
+    calculator();
     validateInputs(inputDay, inputMonth, inputYear); 
  }
 

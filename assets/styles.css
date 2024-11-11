@@ -152,6 +152,9 @@ body {
                     border-radius: .5rem;
                     border: 1px solid var(--clr-off-white);
                 }
+                input:focus {
+                    outline: 2px solid var(--clr-primary);
+                }
                 input::placeholder {
                     color: var(--clr-light-grey);
                 }
@@ -250,5 +253,4 @@ body {
             } 
         }
     }
-
 }
